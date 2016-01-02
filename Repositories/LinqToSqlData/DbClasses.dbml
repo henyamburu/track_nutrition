@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="usda_nutrient" Class="DbClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=tcp:henyamburu.database.windows.net;Initial Catalog=usda_nutrient;User ID=henyamburu@henyamburu;Connect Timeout=60" SettingsObjectName="Repositories.Properties.Settings" SettingsPropertyName="usda_nutrientConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.usda_food_des" Member="FoodDescrptions">
+    <Type Name="FoodDescrption">
+      <Column Name="NDB_No" Member="Id" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FdGrp_Cd" Type="System.Decimal" DbType="Decimal(4,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Long_Desc" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Shrt_Desc" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="ComName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ManufacName" Type="System.String" DbType="NVarChar(65)" CanBeNull="true" />
+      <Column Name="Survey" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="Ref_desc" Type="System.String" DbType="NVarChar(135)" CanBeNull="true" />
+      <Column Name="Refuse" Type="System.Decimal" DbType="Decimal(2,0)" CanBeNull="true" />
+      <Column Name="SciName" Type="System.String" DbType="NVarChar(65)" CanBeNull="true" />
+      <Column Name="N_Factor" Type="System.Decimal" DbType="Decimal(4,2)" CanBeNull="true" />
+      <Column Name="Pro_Factor" Type="System.Decimal" DbType="Decimal(4,2)" CanBeNull="true" />
+      <Column Name="Fat_Factor" Type="System.Decimal" DbType="Decimal(4,2)" CanBeNull="true" />
+      <Column Name="CHO_Factor" Type="System.Decimal" DbType="Decimal(4,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
