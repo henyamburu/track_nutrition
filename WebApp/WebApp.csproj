@@ -196,6 +196,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Concepts\Kendo\autocomplete_anqularjs.html" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\kendoui.2015.3.1111\styles\Default\editor.png" />
@@ -214,6 +215,9 @@
     <Content Include="Content\css\kendoui.2015.3.1111\styles\Default\sprite_kpi_2x.png" />
     <Content Include="Content\css\kendoui.2015.3.1111\styles\kendo.common.min.css" />
     <Content Include="Content\css\kendoui.2015.3.1111\styles\kendo.default.min.css" />
+    <Content Include="Content\scripts\angularjs\angular-ui-router.0.2.15.min.js" />
+    <Content Include="Content\scripts\angularjs\angular.1.3.3.min.js" />
+    <Content Include="Content\scripts\angular_demo.js" />
     <Content Include="Content\scripts\kendoui.2015.3.1111\js\kendo.all.min.js" />
     <Content Include="Content\scripts\kendoui.2015.3.1111\js\kendo.angular.min.js" />
     <Content Include="favicon.ico" />
