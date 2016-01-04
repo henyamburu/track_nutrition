@@ -1,60 +1,17 @@
 ﻿angular.module("KendoAutoComplete", ["kendo.directives"])
     .controller("MyCtrl", function (foodSvc, $scope) {
-        $scope.countryNames = [
-        "Albania",
-        "Andorra",
-        "Armenia",
-        "Austria",
-        "Azerbaijan",
-        "Belarus",
-        "Belgium",
-        "Bosnia & Herzegovina",
-        "Bulgaria",
-        "Croatia",
-        "Cyprus",
-        "Czech Republic",
-        "Denmark",
-        "Estonia",
-        "Finland",
-        "France",
-        "Georgia",
-        "Germany",
-        "Greece",
-        "Hungary",
-        "Iceland",
-        "Ireland",
-        "Italy",
-        "Kosovo",
-        "Latvia",
-        "Liechtenstein",
-        "Lithuania",
-        "Luxembourg",
-        "Macedonia",
-        "Malta",
-        "Moldova",
-        "Monaco",
-        "Montenegro",
-        "Netherlands",
-        "Norway",
-        "Poland",
-        "Portugal",
-        "Romania",
-        "Russia",
-        "San Marino",
-        "Serbia",
-        "Slovakia",
-        "Slovenia",
-        "Spain",
-        "Sweden",
-        "Switzerland",
-        "Turkey",
-        "Ukraine",
-        "United Kingdom",
-        "Vatican City"
-        ];
-        $scope.countryNameChange = function () {
+        $scope.foodNameChange = function () {
+            $scope.foods = [];
             console.log("event :: change");
-            console.log(foodSvc.getFoods($scope.country, 1));
+            foodSvc.getFoods($scope.food, 1)
+                .then(function (payload) {
+                    angular.forEach(payload, function (food) {
+                        console.log(food);
+                        $scope.foods.push(food.Long_Desc);
+                    });
+                });
+            
+            
         }
     })
     .service("foodSvc", function Profile($http, $q) {

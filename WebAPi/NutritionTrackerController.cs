@@ -23,13 +23,19 @@ namespace WebAPi
         [ActionName("foods")]
         public IList<FoodDescrption> GetFoods(string value, 
             int pageNumber, 
-            int pageSize = 20)
+            int pageSize = 10)
         {
-            return _FoodDescrptionRepo.Find(
-                f => f.Long_Desc.StartsWith(value), 
+            IList<FoodDescrption> foods = default(List<FoodDescrption>);
+
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                foods = _FoodDescrptionRepo.Find(
+                f => f.Long_Desc.StartsWith(value),
                 ((pageNumber - 1) * pageSize),
                 pageSize,
                 f => f.Long_Desc, false);
+            }
+            return foods;
         }
     }
 }
