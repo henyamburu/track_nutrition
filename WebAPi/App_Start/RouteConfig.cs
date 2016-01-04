@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Web.Http;
 using WebApi.Constriants;
 
@@ -7,38 +8,54 @@ namespace WebApi.App_Start
     {
         public static void Register(HttpConfiguration config)
         {
+            Debugger.Break();
+
             config.Routes.MapHttpRoute(
-                name: "NutritionFoodGroup",
+                name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}"
             );
-            config.Routes.MapHttpRoute(                
-                name: "NutritionWeightsByFood",
-                routeTemplate: "api/{controller}/{action}/{foodId}",
-                defaults: new { foodId = System.Web.Http.RouteParameter.Optional },
-                constraints: new RegExConstraint(@"\d+")
-            );
+
             config.Routes.MapHttpRoute(
-               name: "NutritionSaveOrGetUser",
-               routeTemplate: "api/{controller}/{action}/{user}"
-           );
-           config.Routes.MapHttpRoute(
-               name: "NutritionSaveNourishment",
-               routeTemplate: "api/{controller}/{action}/{history}"
-           );
-           config.Routes.MapHttpRoute(
-                name: "NutritionOrProfile",
-                routeTemplate: "api/{controller}/{action}/{userId}/{date}",
-                defaults: new { userId = System.Web.Http.RouteParameter.Optional, date = System.Web.Http.RouteParameter.Optional }
+                name: "NutritionTrackerFoods",
+                routeTemplate: "api/{controller}/{action}/{value}/{pageNumber}/{pageSize}",
+            defaults: new
+            {
+                pageSize = System.Web.Http.RouteParameter.Optional
+            },
+            constraints: new
+            {
+                pageNumber = new RegExConstraint(@"\d+"),
+                //pageSize = new RegExConstraint(@"\d+")
+            }
             );
-            config.Routes.MapHttpRoute(
-                name: "NutritionHistoryRange",
-                routeTemplate: "api/{controller}/{action}/{userId}/{startdate}/{enddate}",
-                defaults: new {
-                    userId = System.Web.Http.RouteParameter.Optional,
-                    startdate = System.Web.Http.RouteParameter.Optional,
-                    enddate = System.Web.Http.RouteParameter.Optional
-                }
-            );
+            // config.Routes.MapHttpRoute(                
+            //     name: "NutritionWeightsByFood",
+            //     routeTemplate: "api/{controller}/{action}/{foodId}",
+            //     defaults: new { foodId = System.Web.Http.RouteParameter.Optional },
+            //     constraints: new RegExConstraint(@"\d+")
+            // );
+            // config.Routes.MapHttpRoute(
+            //    name: "NutritionSaveOrGetUser",
+            //    routeTemplate: "api/{controller}/{action}/{user}"
+            //);
+            //config.Routes.MapHttpRoute(
+            //    name: "NutritionSaveNourishment",
+            //    routeTemplate: "api/{controller}/{action}/{history}"
+            //);
+            //config.Routes.MapHttpRoute(
+            //     name: "NutritionOrProfile",
+            //     routeTemplate: "api/{controller}/{action}/{userId}/{date}",
+            //     defaults: new { userId = System.Web.Http.RouteParameter.Optional, date = System.Web.Http.RouteParameter.Optional }
+            // );
+            // config.Routes.MapHttpRoute(
+            //     name: "NutritionHistoryRange",
+            //     routeTemplate: "api/{controller}/{action}/{userId}/{startdate}/{enddate}",
+            //     defaults: new {
+            //         userId = System.Web.Http.RouteParameter.Optional,
+            //         startdate = System.Web.Http.RouteParameter.Optional,
+            //         enddate = System.Web.Http.RouteParameter.Optional
+            //     }
+            // );
             //config.Routes.MapHttpRoute(
             //    name: "MediaCenterTopicAndTypeApi",
             //    routeTemplate: "api/{controller}/{topicId}/{typeId}/{pageNum}/{action}",
@@ -63,10 +80,7 @@ namespace WebApi.App_Start
             //    constraints: new RegExConstraint(@"\d+")
             //);
 
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{action}"
-            //);
+            
 
             //config.Routes.MapHttpRoute(
             //    name: "AllGames",

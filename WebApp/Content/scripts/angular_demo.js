@@ -1,5 +1,5 @@
 ﻿angular.module("KendoAutoComplete", ["kendo.directives"])
-    .controller("MyCtrl", function ($scope) {
+    .controller("MyCtrl", function (foodSvc, $scope) {
         $scope.countryNames = [
         "Albania",
         "Andorra",
@@ -54,5 +54,21 @@
         ];
         $scope.countryNameChange = function () {
             console.log("event :: change");
+            console.log(foodSvc.getFoods($scope.country, 1));
         }
     })
+    .service("foodSvc", function Profile($http, $q) {
+        return {
+            getFoods: function (value, pageNum) {
+                var deferred = $q.defer();
+                $http.get('/api/NutritionTracker/foods?value=' + value + '&pageNumber=' + pageNum)
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    }).error(function (msg, code) {
+                        deferred.reject(msg);
+                        $log.error(msg, code);
+                    });
+                return deferred.promise;
+            }
+        }
+    });

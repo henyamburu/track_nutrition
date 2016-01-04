@@ -15,9 +15,6 @@ namespace WebApp
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             WebApi.BootStrapper.Init(GlobalConfiguration.Configuration);
 
@@ -25,6 +22,10 @@ namespace WebApp
             _container.Install(new RepositoriesInstaller(),
                 new WebApiInstaller());
             GlobalConfiguration.Configuration.DependencyResolver = new WebApi.CastleWindsor.DependencyResolver(_container.Kernel);
+
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         protected void Application_End(object sender, EventArgs e)
